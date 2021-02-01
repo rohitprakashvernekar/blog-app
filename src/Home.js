@@ -4,30 +4,19 @@ import BlogList from "./BlogList";
 
 const Home = () => {
   const [blogs, setBlogs] = useState([
-    {
-      title: "My New Website",
-      body: "loreem ipsum...",
-      author: "Rohit",
-      id: 1,
-    },
-    {
-      title: "Welcome",
-      body: "loreem ipsum...",
-      author: "Vernekar",
-      id: 2,
-    },
-    {
-      title: "Web Dev",
-      body: "loreem ipsum...",
-      author: "RPV",
-      id: 3,
-    },
+    { title: "My New Website", body: "loreem ipsum...",author: "Rohit",id: 1,},
+    { title: "Welcome",body: "loreem ipsum...",author: "Vernekar",id: 2,},
+    { title: "Web Dev",body: "loreem ipsum...",author: "RPV",id: 3,},
   ]);
+
+  const handleDelete =(id) =>{
+    const newBlogs = blogs.filter(blog =>blog.id!==id);
+    setBlogs(newBlogs)
+  }
 
   return (
     <div className="home">
-      <BlogList blogs={blogs} title="All Blogs"/>
-      <BlogList blogs={blogs.filter((blog)=> blog.author==='Rohit' )} title="Rohit's Blogs"/>
+      <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete}/>
     </div>
   );
 };
